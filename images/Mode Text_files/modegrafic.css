@@ -1,0 +1,16 @@
+body {
+    background-color: beige;
+    padding: 20px;
+}
+
+#enviar:hover {
+    background-color: yellow;
+}
+
+#result {
+    margin-top: 3%;
+    box-shadow: 10px;
+    height: 30%;
+    width: 50%;
+    background-color: grey;
+}

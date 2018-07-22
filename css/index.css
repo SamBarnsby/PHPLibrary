@@ -1,0 +1,26 @@
+body {
+    background-image: url(../images/beige.jpeg);
+    @font-face { font-family: Library; src: url(/fonts/LRT_Nutshell_Library); } 
+    @font-face { font-family: Library; font-weight: bold; src: url(/fonts/LRT_Nutshell_Library);}
+}
+
+.newsizecarousel {
+    height: 10px;
+    width: 25%;
+}
+
+.sizecards {
+    float: right;
+}
+
+.personalcard {
+    margin-left: 10px;
+}
+
+.my-nav {
+    float: right;
+}
+
+#mytable {
+    background-color: #ffffff;
+}

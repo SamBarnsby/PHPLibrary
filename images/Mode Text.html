@@ -1,0 +1,128 @@
+
+<!-- saved from url=(0053)file:///C:/Users/samba/Desktop/examen/modegrafic.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>Mode Text</title>
+        <link rel="stylesheet" href="./Mode Text_files/modegrafic.css">
+    </head>
+    <body>
+        
+        <input type="text" id="cadena">
+        <input type="submit" id="enviar" value="Submit" onclick="juego()">
+        <br>
+        <div id="result"></div>
+        <script type="text/javascript">
+            var rounds = 6;
+            var name = prompt("Dame tu nombre");
+            var youwin = 0;
+            var pcwin = 0;
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+            function find() {
+                var string = document.getElementById("cadena").value;
+                var taula = string.split(" ");
+                var taula2 = new Array(taula.length);
+                for(var i = 0; i < taula.length; i++) {
+                    taula2[i] = taula[i].toLowerCase();
+                }
+                
+                var primera_paraula = "";
+                for(var i = 0; i < taula2.length; i++) {
+                    if(taula2[i] == "papel") {primera_paraula = taula2[i]; break;}
+                    if(taula2[i] == "piedra") {primera_paraula = taula2[i]; break;}
+                    if(taula2[i] == "piedra") {primera_paraula = taula2[i]; break;}
+                    if(taula2[i] == "tijeras"){primera_paraula = taula2[i]; break;}
+                    if(taula2[i] == "lagarto") {primera_paraula = taula2[i]; break;}
+                    if(taula2[i] == "spock") {primera_paraula = taula2[i]; break;}
+                }
+                return primera_paraula;
+            }
+            function juego() {
+                if(rounds > 0) {
+                    
+                    var choice = find();
+                    var choicenumber;
+                    var opcions = ["papel","piedra","tijeras","lagarto","spock"];
+                    var bool = false;
+                    for(var i = 0; i < opcions.length; i++) {
+                        if(choice == opcions[i]) {
+                            choicenumber = i;
+                            bool = true;
+                        }
+                    }
+                    if(bool == false) {
+                        exit();
+                    } 
+                    var randomint = getRandomInt(0, 5);
+                    var compchoice = opcions[randomint];
+                    var text = "dsdsd";
+                    
+
+                    if(choicenumber == 0) {
+                        if(randomint == 0) {text="empate";}
+                        if(randomint == 1) {text="Has ganado";}
+                        if(randomint == 2) {text="Has perdido";}
+                        if(randomint == 3) {text="Has perdido";}
+                        if(randomint == 4) {text="Has ganado";}
+                    }
+
+                     if(choicenumber == 1) {
+                        if(randomint == 0) {text="Has perdido";}
+                        if(randomint == 1) {text="empate";}
+                        if(randomint == 2) {text="Has ganado";}
+                        if(randomint == 3) {text="Has ganado";}
+                        if(randomint == 4) {text="Has perdido";}
+                    }
+
+                    if(choicenumber == 2) {
+                        if(randomint == 0) {text="Has ganado";}
+                        if(randomint == 1) {text="Has perdido";}
+                        if(randomint == 2) {text="empate";}
+                        if(randomint == 3) {text="Has ganado";}
+                        if(randomint == 4) {text="Has perdido";}
+                    }
+
+                    if(choicenumber == 3) {
+                        if(randomint == 0) {text="Has ganado";}
+                        if(randomint == 1) {text="Has perdido";}
+                        if(randomint == 2) {text="Has perdido";}
+                        if(randomint == 3) {text="empate";}
+                        if(randomint == 4) {text="Has ganado";}
+                    }
+
+                    if(choicenumber == 4) {
+                        if(randomint == 0) {text="Has ganado";}
+                        if(randomint == 1) {text="Has ganado";}
+                        if(randomint == 2) {text="Has perdido";}
+                        if(randomint == 3) {text="Has perdido";}
+                        if(randomint == 4) {text="empate";}
+                    }
+
+                    if(text == "Has ganado") {
+                        youwin++;
+                    }
+                    else if(text =="Has perdido") {
+                        pcwin++;
+                    }
+                    else {}
+
+                    document.getElementById("result").innerHTML += "Has escogido " + choice + " y la maquina ha elegido " + compchoice + " " + text + " Resultado: " + youwin + "-" + pcwin + "<br/>";
+                    rounds--;
+                    if(rounds == 0 && youwin > pcwin) {
+                        document.write("Tu ganas" + name + "!");
+                    }
+                    else if(rounds == 0 && pcwin > youwin) {
+                        document.write("Lo siento, has perdido " + name);
+                    }
+                    else if (rounds == 0 && pcwin == youwin) {
+                        document.write("Has empatado " + name);
+                    }
+                }
+                else {}
+            }
+
+            
+            
+        </script>
+    
+</body></html>

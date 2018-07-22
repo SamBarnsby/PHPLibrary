@@ -1,0 +1,4 @@
+<?php
+   $maximumdays = 20;
+   
+?>
