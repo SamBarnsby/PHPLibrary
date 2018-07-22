@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2017 a las 18:07:37
+-- Tiempo de generación: 22-07-2018 a las 12:39:56
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -66,6 +66,7 @@ CREATE TABLE `book` (
 INSERT INTO `book` (`ISBN`, `Name`, `Author`, `Year`, `Editorial`, `Language`, `Genre`) VALUES
 ('343434343', 'A Game Of Thrones', 2, 1998, 1, 'English', 'Medieval'),
 ('5-1948-0501-0', 'Skulduggery Pleasant', 4, 2007, 3, 'English', 'Fantasy'),
+('676767676', 'my book', 4, 2018, 3, 'english', 'action'),
 ('9-5698-2651-0', 'Harry Potter and the Phillosofer Stone', 3, 1997, 2, 'English', 'Adventure');
 
 -- --------------------------------------------------------
@@ -91,7 +92,8 @@ INSERT INTO `book_copy` (`ID`, `original_ISBN`, `Name`, `Language`, `state`) VAL
 (25, '343434343', 'Un Juego de Tronos', 'Spanish', 'used'),
 (26, '343434343', 'A Game of Thrones', 'English', 'good'),
 (27, '9-5698-2651-0', 'Harry potter y la piedra filosofal', 'Spanish', 'bad'),
-(29, '9-5698-2651-0', 'Harry potter y la piedra filosofal', 'Spanish', 'used');
+(29, '9-5698-2651-0', 'Harry potter y la piedra filosofal', 'Spanish', 'used'),
+(30, '676767676', 'mi libro', 'spanish', 'bad');
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,8 @@ CREATE TABLE `reservation` (
   `ID` int(10) NOT NULL,
   `userID` int(5) NOT NULL,
   `bookID` int(4) NOT NULL,
-  `DatePickUp` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `DateReservation` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `PickUpDate` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `DateReturn` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -132,14 +135,11 @@ CREATE TABLE `reservation` (
 -- Volcado de datos para la tabla `reservation`
 --
 
-INSERT INTO `reservation` (`ID`, `userID`, `bookID`, `DatePickUp`, `DateReturn`) VALUES
-(14, 36, 24, '10/12/2017', NULL),
-(15, 36, 27, '10/09/2017', NULL),
-(16, 36, 29, '15/11/2017', '17/12/2017'),
-(18, 36, 29, '15/11/2017', '15/11/2017'),
-(20, 36, 29, NULL, NULL),
-(21, 36, 25, NULL, NULL),
-(22, 35, 26, NULL, NULL);
+INSERT INTO `reservation` (`ID`, `userID`, `bookID`, `DateReservation`, `PickUpDate`, `DateReturn`) VALUES
+(58, 49, 24, '01-02-2018', '12-02-2018', '12-02-2018'),
+(59, 49, 25, '20-01-2018', '21-01-2018', '12-02-2018'),
+(60, 49, 30, '12-02-2018', NULL, NULL),
+(61, 35, 24, '17-02-2013', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,7 +165,8 @@ INSERT INTO `user` (`ID`, `Name`, `Email`, `User_type`, `password`) VALUES
 (36, 'Ander', 'alunaucete@gmail.com', 3, 'ander'),
 (39, 'Antonio', 'totti619@gmail.com', 1, 'totti'),
 (41, 'Jason', 'jasonluna@gmail.com', 2, 'jasonluna'),
-(48, 'sepe', 'sepe@gmail.com', 2, 'sepe');
+(48, 'sepe', 'sepe@gmail.com', 2, 'sepe'),
+(49, 'claire', 'claire@gmail.com', 3, 'Dequa16.');
 
 -- --------------------------------------------------------
 
@@ -252,7 +253,7 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT de la tabla `book_copy`
 --
 ALTER TABLE `book_copy`
-  MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `editorial`
 --
@@ -262,12 +263,12 @@ ALTER TABLE `editorial`
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `user_type`
 --
